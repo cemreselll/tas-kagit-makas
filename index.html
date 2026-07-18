@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taş Kağıt Makas</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#141E30,#243B55);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.container{
+width:400px;
+background:rgba(255,255,255,.1);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+text-align:center;
+box-shadow:0 0 30px rgba(0,255,255,.3);
+}
+
+h1{
+margin-bottom:20px;
+}
+
+.score{
+display:flex;
+justify-content:space-around;
+margin:20px 0;
+font-size:22px;
+}
+
+.buttons button{
+font-size:40px;
+margin:10px;
+padding:15px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.buttons button:hover{
+transform:scale(1.15);
+}
+
+#result{
+margin-top:20px;
+font-size:22px;
+min-height:100px;
+}
+
+.reset{
+margin-top:20px;
+padding:10px 20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#00d4ff;
+color:white;
+}
+
+.reset:hover{
+background:#00aacc;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎮 Taş Kağıt Makas</h1>
+
+<div class="score">
+<div>😊 Sen<br><span id="player">0</span></div>
+<div>🤖 PC<br><span id="computer">0</span></div>
+</div>
+
+<div class="buttons">
+<button onclick="play('Taş')">🪨</button>
+<button onclick="play('Kağıt')">📄</button>
+<button onclick="play('Makas')">✂️</button>
+</div>
+
+<div id="result">
+Seçimini yap!
+</div>
+
+<button class="reset" onclick="resetGame()">Yeniden Başlat</button>
+
+</div>
+
+<script>
+
+let player=0;
+let computer=0;
+
+function play(choice){
+
+const list=["Taş","Kağıt","Makas"];
+
+const pc=list[Math.floor(Math.random()*3)];
+
+let text="";
+
+if(choice===pc){
+
+text="🤝 Berabere!";
+
+}
+
+else if(
+
+(choice=="Taş" && pc=="Makas") ||
+
+(choice=="Kağıt" && pc=="Taş") ||
+
+(choice=="Makas" && pc=="Kağıt")
+
+){
+
+player++;
+
+text="🎉 Kazandın!";
+
+}
+
+else{
+
+computer++;
+
+text="😢 Kaybettin!";
+
+}
+
+document.getElementById("player").innerText=player;
+document.getElementById("computer").innerText=computer;
+
+document.getElementById("result").innerHTML=
+`
+<b>Sen:</b> ${choice}<br>
+<b>Bilgisayar:</b> ${pc}<br><br>
+<h2>${text}</h2>
+`;
+
+}
+
+function resetGame(){
+
+player=0;
+computer=0;
+
+document.getElementById("player").innerText=0;
+document.getElementById("computer").innerText=0;
+
+document.getElementById("result").innerHTML="Seçimini yap!";
+
+}
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
